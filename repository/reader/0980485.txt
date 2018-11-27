@@ -1,0 +1,9 @@
+{
+	"id":"0980485",
+	"name":"Juanwei Chen",
+	"add":"Flushing",
+	"phone":"1234567890",
+	"balance":0,
+	"borrowed":[],
+	"reserved":[],
+}

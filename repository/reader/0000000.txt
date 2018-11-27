@@ -1,0 +1,9 @@
+{
+	"id":"",
+	"name":"",
+	"add":"",
+	"phone":"",
+	"balance":0,
+	"borrowed":[],
+	"reserved":[]
+}

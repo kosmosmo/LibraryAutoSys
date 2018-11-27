@@ -1,0 +1,12 @@
+{
+    "Publisher": "2", 
+    "Language": "", 
+    "Title": "", 
+    "Authors": [], 
+    "Returndate": "", 
+    "ISBN-13": "", 
+    "Year": "", 
+    "Borrowby": "", 
+    "Copy": "", 
+    "Reserve": ""
+}

@@ -1,0 +1,14 @@
+{
+    "Publisher": "Ballantine Books", 
+    "Language": "en", 
+    "Title": "The Fortunate Pilgrim", 
+    "Year": "2004", 
+    "Returndate": "2018-12-17 15:54:00", 
+    "ISBN-13": "9780345476722", 
+    "Authors": [
+        "Mario Puzo"
+    ], 
+    "Borrowby": "123", 
+    "Copy": 1, 
+    "Reserve": ""
+}
