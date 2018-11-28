@@ -1,6 +1,7 @@
 from PySide.QtCore import *
 from PySide.QtGui import *
 from changeui import Ui_ChangePassword
+from adminWin import Ui_adminWin
 import sys
 import Authentication
 import mainui
@@ -11,8 +12,13 @@ class MainDialog(QDialog,mainui.Ui_Login):
         super(MainDialog,self).__init__(parent)
         self.setupUi(self)
         self.pushButton_adminchange.clicked.connect(self.openChange)
-        self.connect(self.pushButton_adminlog, SIGNAL("clicked()"),self.checking)
+        self.pushButton_adminlog.clicked.connect(self.checking)
 
+    def openAdmin(self):
+        self.window = QMainWindow()
+        self.ui = Ui_adminWin()
+        self.ui.setupUi(self.window)
+        self.window.show()
 
     def openChange(self):
         self.window = QMainWindow()
@@ -20,11 +26,16 @@ class MainDialog(QDialog,mainui.Ui_Login):
         self.ui.setupUi(self.window)
         self.window.show()
 
+
+
     def checking(self):
         auth = Authentication.Authentication()
         res = auth.checkpw(self.lineEdit_user.text(),self.lineEdit_password.text())
         if not res:
             QMessageBox.information(self,"Nope!","User name or password not correct")
+        else:
+            self.openAdmin()
+            self.lineEdit_password.clear()
 
 
 

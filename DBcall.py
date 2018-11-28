@@ -47,13 +47,13 @@ class Json:
         with open(dir, 'r+') as f:
             data = json.load(f)
             if user in data:
-                return "user already exists"
+                return False
             else:
                 data[user] = pw
                 f.seek(0)
                 json.dump(data, f, indent=4)
                 f.truncate()
-        return "Successed"
+        return True
 
     def addbook(self,ISBN):
         dir = "repository/book/" + ISBN
