@@ -1,36 +1,24 @@
 import os,DBcall
 class BookManagement:
-    def searchID(self,ISBN):
-        return
-
-    def searchTitle(self,title):
-        return
-
-    def searchPN(self,pName):
-        return
-
     def checkOut(self,ISBN,Borrow):
-        json = DBcall.Json()
-        json.checkOut(ISBN,Borrow)
-        return
+        sql = DBcall.Mysql()
+        return sql.checkOut(ISBN,Borrow)
 
     def addBook(self,ISBN):
-        dir = "repository/book/" + ISBN
-        json = DBcall.Json()
-        if os.path.isdir(dir):json.addcopy(ISBN)
-        else:json.addbook(ISBN)
+        sql = DBcall.Mysql()
+        temp = sql.checkBook(ISBN)
+        if temp:
+            info = sql.addcopy(ISBN)
+        else:
+            info = sql.addbook(ISBN)
+        return info
 
     def returnBook(self,ISBN,Borrow):
-        json = DBcall.Json()
-        json.returnBook(ISBN,Borrow)
-
+        sql = DBcall.Mysql()
+        sql.returnBook(ISBN,Borrow)
 
     def reserve(self,ISBN):
         return
 
 a = BookManagement()
-a.addBook("9780345476722")
-a.addBook("9780345476722")
-a.checkOut("9780345476722","123")
-a.checkOut("9780345476722","321")
-a.returnBook("9780345476722","321")
+a.checkOut("9780345476722",'06')
