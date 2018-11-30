@@ -1,0 +1,8 @@
+{
+	"Flushing":"Queens,NewYork",
+	"Bikini Bottom":"Underwater pineapple"
+	"South Park": "Rocky Mountains of central Colorado"
+	"Neverland" : "Your imagination"
+	"Gotham City" : "New Jersey"
+	"Wonderful World": "Land of OZ"
+}
