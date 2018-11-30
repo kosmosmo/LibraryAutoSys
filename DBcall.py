@@ -137,6 +137,19 @@ class Json:
 
 
 class Mysql:
+    def getAllReader(self):
+        connection = self.con()
+        try:
+            with connection.cursor() as cursor:
+                sqlQuery = "SELECT Id, Name FROM reader"
+                cursor.execute(sqlQuery)
+                result = cursor.fetchall()
+                res = []
+                for item in result:
+                    res.append(item['Id']+'_'+item['Name'])
+        finally:
+            connection.close()
+        return res
     def checkBook(self,ISBN):
         connection = self.con()
         try:
@@ -356,7 +369,7 @@ class Mysql:
         file = open(cache, "w")
         file.write(newid)
         file.close()
-        return True
+        return newid
 
     def borrowCount(self,BorrowID):
         connection = self.con()
@@ -369,11 +382,3 @@ class Mysql:
             connection.close()
 
 a=Mysql()
-print a.checkOut("9780345476722","0980486")
-print a.checkOut("9781881133209","0980486")
-#print a.makeReserve("9780345476722","0980485")
-#print a.returnBook("9780345476722","0980486")
-#print a.pickUp("9780345476722","0980485")
-#print a.returnBook("9780345476722","0980485")
-#print a.returnBook("9780345476722","0980485")
-#print a.returnBook("9781881133209","0980486")

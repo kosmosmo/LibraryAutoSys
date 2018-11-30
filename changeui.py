@@ -61,6 +61,7 @@ class Ui_ChangePassword(object):
         res = auth.changePW(self.lineEdit_user.text(),self.lineEdit_oldpw.text(),self.lineEdit_newpw.text())
         if res:
             self.label_st.setText("SUCCESSED!!")
+
         else:
             self.label_st.setText("FAILED!")
 

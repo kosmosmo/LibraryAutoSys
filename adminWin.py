@@ -8,9 +8,15 @@
 # WARNING! All changes made in this file will be lost!
 
 from PySide import QtCore, QtGui
+from readerPop import Ui_readerpop
+import readerPop
 import Authentication
-
+import Memeber
+import DBcall
+from PySide.QtGui import *
 class Ui_adminWin(object):
+    sql = DBcall.Mysql()
+    reader = sql.getAllReader()
     def setupUi(self, adminWin):
         adminWin.setObjectName("adminWin")
         adminWin.resize(620, 632)
@@ -112,7 +118,34 @@ class Ui_adminWin(object):
         self.pushButton_booklog.setText(QtGui.QApplication.translate("adminWin", "Book Log", None, QtGui.QApplication.UnicodeUTF8))
         self.label_isbn.setText(QtGui.QApplication.translate("adminWin", "ISBN:", None, QtGui.QApplication.UnicodeUTF8))
 
+        for item in self.reader:
+            self.listWidget_reader.addItem(item)
         self.pushButton_addadmin.clicked.connect(self.createadmin)
+        self.pushButton_addreader.clicked.connect(self.addReader)
+        self.lineEdit_search.textChanged.connect(self.buildReaderList)
+
+        self.pushButton_get.clicked.connect(self.readerPop)
+
+    def readerPop(self):
+        id = self.listWidget_reader.currentItem().text()[:7]
+        self.window = QMainWindow()
+        self.ui = Ui_readerpop(id)
+        self.ui.setupUi(self.window)
+        self.window.show()
+        self.window.setWindowTitle(id)
+
+
+
+    def buildReaderList(self):
+        self.listWidget_reader.clear()
+        searchPattern = self.lineEdit_search.text().lower()
+        for read in self.reader:
+            name = read
+            if searchPattern in name.lower():
+                item = QtGui.QListWidgetItem(name)
+                item.setData(32,read)
+                self.listWidget_reader.addItem(item)
+        self.listWidget_reader.sortItems()
 
     def createadmin(self):
         auth = Authentication.Authentication()
@@ -123,7 +156,25 @@ class Ui_adminWin(object):
             res = auth.createAdmin(user,pw)
         if not res:
             self.textEdit_history.setText("Create admin "+ user +" sccussed!")
+            self.lineEdit_user.clear()
+            self.lineEdit_pw.clear()
         else:
             self.textEdit_history.setText("Create admin "+ user +" Failed!")
+
+    def addReader(self):
+        mem = Memeber.MemberManagement()
+        name = self.lineEdit_name.text()
+        ph = self.lineEdit_phone.text()
+        add = self.lineEdit_add.text()
+        if name != '':
+            a = mem.addReader(name,add,ph)
+            self.textEdit_history.setText("Reader " + name + " Added!")
+            self.textEdit_history.append("Your member ID is " + a)
+            self.lineEdit_add.clear()
+            self.lineEdit_phone.clear()
+            self.lineEdit_name.clear()
+            self.listWidget_reader.addItem(a + '_' + name)
+        else:
+            self.textEdit_history.setText("Failed! Name can not be empty!")
 
 

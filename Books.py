@@ -20,5 +20,3 @@ class BookManagement:
     def reserve(self,ISBN):
         return
 
-a = BookManagement()
-a.checkOut("9780345476722",'06')

@@ -26,8 +26,6 @@ class MainDialog(QDialog,mainui.Ui_Login):
         self.ui.setupUi(self.window)
         self.window.show()
 
-
-
     def checking(self):
         auth = Authentication.Authentication()
         res = auth.checkpw(self.lineEdit_user.text(),self.lineEdit_password.text())
@@ -35,6 +33,9 @@ class MainDialog(QDialog,mainui.Ui_Login):
             QMessageBox.information(self,"Nope!","User name or password not correct")
         else:
             self.openAdmin()
+            file = open("cache/admin.txt", "w")
+            file.write(self.lineEdit_user.text())
+            file.close()
             self.lineEdit_password.clear()
 
 

@@ -34,8 +34,8 @@ connection = pymysql.connect(host = 'localhost',
                              cursorclass= pymysql.cursors.DictCursor)
 try:
     with connection.cursor() as cursor:
-        sqlQuery = "UPDATE readerreserve SET Inhold=%s WHERE ISBN13=%s AND Id=%s AND Reid=%s"
-        cursor.execute(sqlQuery,('9780345476722'))
+        sqlQuery = "SELECT Id, Name FROM reader"
+        cursor.execute(sqlQuery)
         result = cursor.fetchall()
         print result
 finally:
