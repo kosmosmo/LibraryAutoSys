@@ -169,8 +169,10 @@ class Mysql:
             with connection.cursor() as cursor:
                 sqlQuery = "INSERT INTO book(ISBN13, Title, Author, Publisher, Language, Year, Count) VALUES (%s,%s,%s,%s,%s,%s,%s)"
                 sqlQuery2 = "INSERT INTO copy(ISBN13, Copy) VALUES (%s,%s)"
+                sqlQuery3 = "INSERT INTO author(ISBN13, Author) VALUES (%s, %s)"
                 cursor.execute(sqlQuery,(isbn,ti,au[0],p,lan,y,'0'))
                 cursor.execute(sqlQuery2, (isbn, "001"))
+                cursor.execute(sqlQuery3,(isbn, au[0]))
                 connection.commit()
         finally:
             connection.close()
@@ -219,14 +221,57 @@ class Mysql:
                     cursor.execute(sqlQuery3,(BorrrowID,ISBN,result[0]['copy']))
                     connection.commit()
                     a = "Check out successed"
+                    self.borrowCount(BorrrowID)
         finally:
             connection.close()
         return a
 
+    def checkHold(self,ISBN,BorrowID):
+        connection = self.con()
+        try:
+            with connection.cursor() as cursor:
+                sqlQuery = "SELECT Reid FROM readerreserve WHERE ISBN13=%s AND Id=%s AND Inhold=%s"
+                cursor.execute(sqlQuery,(ISBN,BorrowID,'1'))
+                result = cursor.fetchall()
+        finally:
+            connection.close()
+        if len(result) == 0: return False
+        return result[0]["Reid"]
+
+
+    def pickUp(self,ISBN,BorrowID):
+        temp = self.checkHold(ISBN,BorrowID)
+        if not temp: return "Pick up not ready"
+        connection = self.con()
+        try:
+            with connection.cursor() as cursor:
+                sqlQuery = "SELECT Copy FROM copy WHERE ISBN13=%s AND ReturnDate=%s"
+                cursor.execute(sqlQuery,(ISBN,'HOLD'))
+                result = cursor.fetchone()
+                if len(result) == 0:
+                    self.checkOut(ISBN,BorrowID)
+                else:
+                    sqlQuery = "DELETE FROM readerreserve WHERE ISBN13=%s AND Id=%s AND Reid =%s"
+                    sqlQuery2 = "UPDATE copy SET BorrowID=NULL, ReturnDate=NULL WHERE ISBN13=%s AND ReturnDate=%s"
+                    cursor.execute(sqlQuery,(ISBN,BorrowID,temp))
+                    cursor.execute(sqlQuery2,(ISBN,'HOLD'))
+                    connection.commit()
+                    self.checkOut(ISBN,BorrowID)
+        finally:
+            connection.close()
+        return "Picked!"
+
     def checkReserve(self,ISBN):
-        #############################
-        print "WIP"
-        return False
+        connection = self.con()
+        try:
+            with connection.cursor() as cursor:
+                sqlQuery = "SELECT Reid FROM readerreserve WHERE ISBN13=%s AND Inhold=0"
+                cursor.execute(sqlQuery,(ISBN))
+                result = cursor.fetchall()
+        finally:
+            connection.close()
+        if len(result)== 0: return False
+        else:return result[0]["Reid"]
 
     def returnBook(self,ISBN,BorrowID):
         connection = self.con()
@@ -243,17 +288,32 @@ class Mysql:
                 cursor.execute(sqlQuery, (ISBN, BorrowID,date))
                 result = cursor.fetchone()
                 copy = result['Copy']
-                if not self.checkReserve(ISBN):
+                temp = self.checkReserve(ISBN)
+                if not temp:
                     sqlQuery = "UPDATE copy SET BorrowID=NULL, ReturnDate=NULL WHERE ISBN13=%s AND Copy=%s"
-                    sqlQuery2 = "DELETE FROM readerborrow WHERE ISBN13=%s AND Id=%s AND Copy =%s"
                     cursor.execute(sqlQuery,(ISBN,copy))
-                    cursor.execute(sqlQuery2,(ISBN,BorrowID,copy))
-                    connection.commit()
                 else:
-                    #############################
+                    sqlQuery = "UPDATE copy SET BorrowID=%s, ReturnDate=%s WHERE ISBN13=%s AND Copy=%s"
+                    sqlQuery2 = "UPDATE readerreserve SET Inhold=%s WHERE ISBN13=%s AND Reid=%s"
+                    cursor.execute(sqlQuery, ('HOLD','HOLD',ISBN, copy))
+                    cursor.execute(sqlQuery2, ('1',ISBN,temp))
                     print "WIP"
+                sqlQuery3 = "DELETE FROM readerborrow WHERE ISBN13=%s AND Id=%s AND Copy =%s"
+                cursor.execute(sqlQuery3, (ISBN, BorrowID, copy))
+                connection.commit()
         finally:
             connection.close()
+
+    def bookReserve(self,BorrowID):
+        connection = self.con()
+        try:
+            with connection.cursor() as cursor:
+                sqlQuery = "SELECT ISBN13 FROM readerreserve WHERE ISBN13=%s"
+                cursor.execute(sqlQuery, (BorrowID))
+                result = cursor.fetchall()
+        finally:
+            connection.close()
+        return result
 
     def bookBorrow(self,BorrowID):
         connection = self.con()
@@ -265,6 +325,21 @@ class Mysql:
         finally:
             connection.close()
         return result
+
+    def makeReserve(self,ISBN,BorrowID):
+        if len(self.bookReserve(BorrowID)) >= 10:
+            return "Reserve failed! More than 10 books were reserved by the reader already!"
+        connection = self.con()
+        try:
+            with connection.cursor() as cursor:
+                Reid = str(datetime.datetime.now())[:-7]
+                sqlQuery = "INSERT INTO readerreserve(ISBN13,Id,Reid) VALUES (%s,%s,%s)"
+                cursor.execute(sqlQuery,(ISBN,BorrowID,Reid))
+                connection.commit()
+        finally:
+            connection.close()
+        return True
+
 
     def addReader(self,name,add,phone):
         cache = "cache/readerid.txt"
@@ -283,7 +358,22 @@ class Mysql:
         file.close()
         return True
 
+    def borrowCount(self,BorrowID):
+        connection = self.con()
+        try:
+            with connection.cursor() as cursor:
+                sqlQuery = "UPDATE reader SET Count=Count+1 WHERE Id=%s"
+                cursor.execute(sqlQuery,(BorrowID))
+                connection.commit()
+        finally:
+            connection.close()
+
 a=Mysql()
-#print a.checkOut("9780345476722","0980485")
-#print a.checkOut("9781881133209","0980485")
-print a.bookBorrow("0980485")
+print a.checkOut("9780345476722","0980486")
+print a.checkOut("9781881133209","0980486")
+#print a.makeReserve("9780345476722","0980485")
+#print a.returnBook("9780345476722","0980486")
+#print a.pickUp("9780345476722","0980485")
+#print a.returnBook("9780345476722","0980485")
+#print a.returnBook("9780345476722","0980485")
+#print a.returnBook("9781881133209","0980486")
