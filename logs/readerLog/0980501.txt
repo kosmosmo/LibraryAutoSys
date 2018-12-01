@@ -3,3 +3,17 @@ Ed Sheeran
 Castle on the Hill
 8521329876
 2018-11-30 01:35:29_Reader Created by admin
+2018-12-01 17:46:22_Book 9781400078776 Borrowed
+2018-12-01 17:46:23_Book 9781400078776 Returned.Fine 0 cents is charged!
+2018-12-01 17:46:23_Book 9781400078776 Borrowed
+2018-12-01 17:46:24_Book 9781400078776 Returned.Fine 0 cents is charged!
+2018-12-01 17:46:24_Book 9781400078776 Borrowed
+2018-12-01 17:46:24_Book 9781400078776 Returned.Fine 0 cents is charged!
+2018-12-01 17:46:25_Book 9781400078776 Borrowed
+2018-12-01 17:46:25_Book 9781400078776 Returned.Fine 0 cents is charged!
+2018-12-01 17:46:26_Book 9781400078776 Borrowed
+2018-12-01 17:46:26_Book 9781400078776 Returned.Fine 0 cents is charged!
+2018-12-01 17:46:26_Book 9781400078776 Borrowed
+2018-12-01 17:46:27_Book 9781400078776 Returned.Fine 0 cents is charged!
+2018-12-01 17:46:27_Book 9781400078776 Borrowed
+2018-12-01 17:46:28_Book 9781400078776 Returned.Fine 0 cents is charged!

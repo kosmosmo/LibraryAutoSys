@@ -7,3 +7,13 @@ en
 2018-11-30 15:45:50_Book Created by admin
 2018-11-30 15:45:50_Book Copy 001 added by admin
 2018-12-01 12:23:10_Book Borrowed by 0980485
+2018-12-01 17:44:58_Book Borrowed by 0980500
+2018-12-01 17:44:59_Returned Book by 0980500.Fine 0 cents is charged!
+2018-12-01 17:44:59_Book Borrowed by 0980500
+2018-12-01 17:45:00_Returned Book by 0980500.Fine 0 cents is charged!
+2018-12-01 17:45:00_Book Borrowed by 0980500
+2018-12-01 17:45:01_Returned Book by 0980500.Fine 0 cents is charged!
+2018-12-01 17:45:01_Book Borrowed by 0980500
+2018-12-01 17:45:01_Returned Book by 0980500.Fine 0 cents is charged!
+2018-12-01 17:45:03_Book Borrowed by 0980500
+2018-12-01 17:45:03_Returned Book by 0980500.Fine 0 cents is charged!

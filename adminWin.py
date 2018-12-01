@@ -137,6 +137,7 @@ class Ui_adminWin(object):
 
         self.pushButton_back.clicked.connect(self.getFine)
         self.pushButton_10book.clicked.connect(self.topBooks)
+        self.pushButton_10borrow.clicked.connect(self.topReader)
 
 #   def addBook(self):
 #       ISBN = self.lineEdit_isbn.text()
@@ -257,6 +258,19 @@ class Ui_adminWin(object):
         tens = sorted(tens)
         for i in range(len(tens)-1,-1,-1):
             self.textEdit_history.append("No." + str(len(tens)-i).zfill(2) + "_" + str(tens[i][0]).zfill(4)+ "_"+ sql.getBookTile(tens[i][1]))
+        file.close()
+
+    def topReader(self):
+        sql = DBcall.Mysql()
+        self.textEdit_history.clear()
+        dir = "cache/topBorrowers.txt"
+        file = open(dir, 'r')
+        data = json.load(file)
+        tens = Books.BookManagement().convertToTuple(data)
+        tens = sorted(tens)
+        for i in range(len(tens) - 1, -1, -1):
+            self.textEdit_history.append(
+                "No." + str(len(tens) - i).zfill(2) + "_" + str(tens[i][0]).zfill(4) + "_" + str(tens[i][1])+ "_"+ sql.getReaderName(tens[i][1]))
         file.close()
 
 

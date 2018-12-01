@@ -14,3 +14,9 @@ en
 2018-12-01 16:13:55_Returned Book by 0980486.Fine 0 cents is charged!
 2018-12-01 16:14:16_Pickup by        0980486
 2018-12-01 16:14:26_Returned Book by 0980486.Fine 0 cents is charged!
+2018-12-01 17:59:17_Book Borrowed by 0980489
+2018-12-01 17:59:18_Returned Book by 0980489.Fine 0 cents is charged!
+2018-12-01 17:59:18_Book Borrowed by 0980489
+2018-12-01 17:59:19_Returned Book by 0980489.Fine 0 cents is charged!
+2018-12-01 17:59:19_Book Borrowed by 0980489
+2018-12-01 17:59:20_Returned Book by 0980489.Fine 0 cents is charged!

@@ -259,16 +259,21 @@ class Mysql:
                     sqlQuery2 = "UPDATE book SET Count=Count+1 WHERE ISBN13=%s"
                     sqlQuery3 = "INSERT INTO readerborrow(Id,ISBN13,Copy) VALUES (%s,%s,%s)"
                     sqlQuery4 = "SELECT Count FROM book WHERE ISBN13=%s"
+                    sqlQuery5 = "SELECT Count FROM reader WHERE Id=%s"
                     cursor.execute(sqlQuery,(BorrrowID,str(now)[:-7],ISBN,result[0]['copy']))
                     cursor.execute(sqlQuery2,(ISBN))
                     cursor.execute(sqlQuery3,(BorrrowID,ISBN,result[0]['copy']))
                     cursor.execute(sqlQuery4,(ISBN))
                     count = cursor.fetchone()["Count"]
                     connection.commit()
+                    cursor.execute(sqlQuery5, (BorrrowID))
+                    reader = cursor.fetchone()["Count"]
+                    connection.commit()
                     a = True
                     self.borrowCount(BorrrowID)
                     bk = Books.BookManagement()
                     bk.topBook(ISBN,count)
+                    bk.topReader(BorrrowID,reader)
         finally:
             connection.close()
         return a
@@ -580,3 +585,14 @@ class Mysql:
         finally:
             connection.close()
         return ans
+
+    def getReaderName(self,ID):
+        connection = self.con()
+        try:
+            with connection.cursor() as cursor:
+                sqlQuery = "SELECT Name FROM reader WHERE Id=%s"
+                cursor.execute(sqlQuery,(ID))
+                result = cursor.fetchone()
+        finally:
+            connection.close()
+        return result['Name']

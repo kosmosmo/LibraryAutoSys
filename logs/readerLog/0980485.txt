@@ -17,3 +17,67 @@ Flushing
 2018-12-01 16:48:22_Book 9780486821955 Borrowed
 2018-12-01 16:49:10_Book 9780486821955 Returned.Fine 0 cents is charged!
 2018-12-01 16:51:52_Book 9780307409607 Returned.Fine 200 cents is charged!
+2018-12-01 17:35:22_Book 9780345476722 Borrowed
+2018-12-01 17:35:23_Book 9780345476722 Returned.Fine 0 cents is charged!
+2018-12-01 17:35:24_Book 9780345476722 Borrowed
+2018-12-01 17:35:25_Book 9780345476722 Returned.Fine 0 cents is charged!
+2018-12-01 17:35:25_Book 9780345476722 Borrowed
+2018-12-01 17:35:26_Book 9780345476722 Returned.Fine 0 cents is charged!
+2018-12-01 17:35:27_Book 9780345476722 Borrowed
+2018-12-01 17:35:28_Book 9780345476722 Returned.Fine 0 cents is charged!
+2018-12-01 17:35:28_Book 9780345476722 Borrowed
+2018-12-01 17:35:28_Book 9780345476722 Returned.Fine 0 cents is charged!
+2018-12-01 17:35:29_Book 9780345476722 Borrowed
+2018-12-01 17:35:29_Book 9780345476722 Returned.Fine 0 cents is charged!
+2018-12-01 17:36:25_Book 9781853260087 Borrowed
+2018-12-01 17:36:25_Book 9781853260087 Returned.Fine 0 cents is charged!
+2018-12-01 17:36:26_Book 9781853260087 Borrowed
+2018-12-01 17:36:27_Book 9781853260087 Returned.Fine 0 cents is charged!
+2018-12-01 17:36:27_Book 9781853260087 Borrowed
+2018-12-01 17:36:27_Book 9781853260087 Returned.Fine 0 cents is charged!
+2018-12-01 17:36:28_Book 9781853260087 Borrowed
+2018-12-01 17:36:29_Book 9781853260087 Returned.Fine 0 cents is charged!
+2018-12-01 17:36:29_Book 9781853260087 Borrowed
+2018-12-01 17:36:29_Book 9781853260087 Returned.Fine 0 cents is charged!
+2018-12-01 17:36:30_Book 9781853260087 Borrowed
+2018-12-01 17:36:30_Book 9781853260087 Returned.Fine 0 cents is charged!
+2018-12-01 17:36:31_Book 9781853260087 Borrowed
+2018-12-01 17:36:31_Book 9781853260087 Returned.Fine 0 cents is charged!
+2018-12-01 17:36:31_Book 9781853260087 Borrowed
+2018-12-01 17:36:32_Book 9781853260087 Returned.Fine 0 cents is charged!
+2018-12-01 17:37:12_Book 9781603094122 Borrowed
+2018-12-01 17:37:12_Book 9781603094122 Returned.Fine 0 cents is charged!
+2018-12-01 17:37:13_Book 9781603094122 Borrowed
+2018-12-01 17:37:13_Book 9781603094122 Returned.Fine 0 cents is charged!
+2018-12-01 17:37:13_Book 9781603094122 Borrowed
+2018-12-01 17:37:14_Book 9781603094122 Returned.Fine 0 cents is charged!
+2018-12-01 17:37:14_Book 9781603094122 Borrowed
+2018-12-01 17:37:14_Book 9781603094122 Returned.Fine 0 cents is charged!
+2018-12-01 17:37:15_Book 9781603094122 Borrowed
+2018-12-01 17:37:15_Book 9781603094122 Returned.Fine 0 cents is charged!
+2018-12-01 17:37:15_Book 9781603094122 Borrowed
+2018-12-01 17:37:16_Book 9781603094122 Returned.Fine 0 cents is charged!
+2018-12-01 17:37:16_Book 9781603094122 Borrowed
+2018-12-01 17:37:16_Book 9781603094122 Returned.Fine 0 cents is charged!
+2018-12-01 17:37:17_Book 9781603094122 Borrowed
+2018-12-01 17:37:17_Book 9781603094122 Returned.Fine 0 cents is charged!
+2018-12-01 17:37:17_Book 9781603094122 Borrowed
+2018-12-01 17:37:18_Book 9781603094122 Returned.Fine 0 cents is charged!
+2018-12-01 17:37:18_Book 9781603094122 Borrowed
+2018-12-01 17:37:18_Book 9781603094122 Returned.Fine 0 cents is charged!
+2018-12-01 17:37:19_Book 9781603094122 Borrowed
+2018-12-01 17:37:19_Book 9781603094122 Returned.Fine 0 cents is charged!
+2018-12-01 17:37:19_Book 9781603094122 Borrowed
+2018-12-01 17:37:20_Book 9781603094122 Returned.Fine 0 cents is charged!
+2018-12-01 17:37:20_Book 9781603094122 Borrowed
+2018-12-01 17:37:20_Book 9781603094122 Returned.Fine 0 cents is charged!
+2018-12-01 17:37:20_Book 9781603094122 Borrowed
+2018-12-01 17:37:21_Book 9781603094122 Returned.Fine 0 cents is charged!
+2018-12-01 17:37:21_Book 9781603094122 Borrowed
+2018-12-01 17:37:21_Book 9781603094122 Returned.Fine 0 cents is charged!
+2018-12-01 17:37:22_Book 9781603094122 Borrowed
+2018-12-01 17:37:22_Book 9781603094122 Returned.Fine 0 cents is charged!
+2018-12-01 17:37:22_Book 9781603094122 Borrowed
+2018-12-01 17:37:23_Book 9781603094122 Returned.Fine 0 cents is charged!
+2018-12-01 17:37:23_Book 9781603094122 Borrowed
+2018-12-01 17:37:24_Book 9781603094122 Returned.Fine 0 cents is charged!

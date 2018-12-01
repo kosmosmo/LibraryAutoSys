@@ -3,3 +3,23 @@ Peter Pan
 Neverland
 3471234567
 2018-11-30 01:35:29_Reader Created by admin
+2018-12-01 17:39:08_Book 9780618526413 Borrowed
+2018-12-01 17:39:09_Book 9780618526413 Returned.Fine 0 cents is charged!
+2018-12-01 17:39:09_Book 9780618526413 Borrowed
+2018-12-01 17:39:10_Book 9780618526413 Returned.Fine 0 cents is charged!
+2018-12-01 17:39:10_Book 9780618526413 Borrowed
+2018-12-01 17:39:11_Book 9780618526413 Returned.Fine 0 cents is charged!
+2018-12-01 17:39:12_Book 9780618526413 Borrowed
+2018-12-01 17:39:12_Book 9780618526413 Returned.Fine 0 cents is charged!
+2018-12-01 17:39:12_Book 9780618526413 Borrowed
+2018-12-01 17:39:13_Book 9780618526413 Returned.Fine 0 cents is charged!
+2018-12-01 17:39:13_Book 9780618526413 Borrowed
+2018-12-01 17:39:14_Book 9780618526413 Returned.Fine 0 cents is charged!
+2018-12-01 17:39:14_Book 9780618526413 Borrowed
+2018-12-01 17:39:14_Book 9780618526413 Returned.Fine 0 cents is charged!
+2018-12-01 17:59:17_Book 9780679723165 Borrowed
+2018-12-01 17:59:18_Book 9780679723165 Returned.Fine 0 cents is charged!
+2018-12-01 17:59:18_Book 9780679723165 Borrowed
+2018-12-01 17:59:19_Book 9780679723165 Returned.Fine 0 cents is charged!
+2018-12-01 17:59:19_Book 9780679723165 Borrowed
+2018-12-01 17:59:20_Book 9780679723165 Returned.Fine 0 cents is charged!

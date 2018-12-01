@@ -68,11 +68,12 @@ class BookManagement:
         file = open(dir, 'r')
         data = json.load(file)
         file.close()
-
+        if ISBN in data:
+            data[ISBN] = count
+        else:data[ISBN] = count
         tens = self.convertToTuple(data)
-        tens.append((count,ISBN))
         tens = sorted(tens)
-        if len(tens) > 11:
+        while len(tens) > 10:
             tens.pop(0)
         dic = collections.defaultdict(int)
         for item in tens:
@@ -82,6 +83,27 @@ class BookManagement:
         file.write(r)
         file.close()
 
-a = BookManagement()
+    def topReader(self,ID,count):
+        dir = "cache/topBorrowers.txt"
+        file = open(dir, 'r')
+        data = json.load(file)
+        file.close()
+        if ID in data:
+            data[ID] = count
+        else:data[ID] = count
+        tens = self.convertToTuple(data)
+        tens = sorted(tens)
+        while len(tens) > 10:
+            tens.pop(0)
+        dic = collections.defaultdict(int)
+        for item in tens:
+            dic[item[1]] = int(item[0])
+        r = json.dumps(dic)
+        file = open(dir,'w')
+        file.write(r)
+        file.close()
+
+
+
 
 

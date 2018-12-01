@@ -6,3 +6,39 @@ en
 2017
 2018-11-30 21:22:04_Book Created by admin
 2018-11-30 21:22:04_Book Copy 001 added by admin
+2018-12-01 17:37:12_Book Borrowed by 0980485
+2018-12-01 17:37:12_Returned Book by 0980485.Fine 0 cents is charged!
+2018-12-01 17:37:13_Book Borrowed by 0980485
+2018-12-01 17:37:13_Returned Book by 0980485.Fine 0 cents is charged!
+2018-12-01 17:37:13_Book Borrowed by 0980485
+2018-12-01 17:37:14_Returned Book by 0980485.Fine 0 cents is charged!
+2018-12-01 17:37:14_Book Borrowed by 0980485
+2018-12-01 17:37:14_Returned Book by 0980485.Fine 0 cents is charged!
+2018-12-01 17:37:15_Book Borrowed by 0980485
+2018-12-01 17:37:15_Returned Book by 0980485.Fine 0 cents is charged!
+2018-12-01 17:37:15_Book Borrowed by 0980485
+2018-12-01 17:37:16_Returned Book by 0980485.Fine 0 cents is charged!
+2018-12-01 17:37:16_Book Borrowed by 0980485
+2018-12-01 17:37:16_Returned Book by 0980485.Fine 0 cents is charged!
+2018-12-01 17:37:17_Book Borrowed by 0980485
+2018-12-01 17:37:17_Returned Book by 0980485.Fine 0 cents is charged!
+2018-12-01 17:37:17_Book Borrowed by 0980485
+2018-12-01 17:37:18_Returned Book by 0980485.Fine 0 cents is charged!
+2018-12-01 17:37:18_Book Borrowed by 0980485
+2018-12-01 17:37:18_Returned Book by 0980485.Fine 0 cents is charged!
+2018-12-01 17:37:19_Book Borrowed by 0980485
+2018-12-01 17:37:19_Returned Book by 0980485.Fine 0 cents is charged!
+2018-12-01 17:37:19_Book Borrowed by 0980485
+2018-12-01 17:37:20_Returned Book by 0980485.Fine 0 cents is charged!
+2018-12-01 17:37:20_Book Borrowed by 0980485
+2018-12-01 17:37:20_Returned Book by 0980485.Fine 0 cents is charged!
+2018-12-01 17:37:20_Book Borrowed by 0980485
+2018-12-01 17:37:21_Returned Book by 0980485.Fine 0 cents is charged!
+2018-12-01 17:37:21_Book Borrowed by 0980485
+2018-12-01 17:37:21_Returned Book by 0980485.Fine 0 cents is charged!
+2018-12-01 17:37:22_Book Borrowed by 0980485
+2018-12-01 17:37:22_Returned Book by 0980485.Fine 0 cents is charged!
+2018-12-01 17:37:22_Book Borrowed by 0980485
+2018-12-01 17:37:23_Returned Book by 0980485.Fine 0 cents is charged!
+2018-12-01 17:37:23_Book Borrowed by 0980485
+2018-12-01 17:37:24_Returned Book by 0980485.Fine 0 cents is charged!

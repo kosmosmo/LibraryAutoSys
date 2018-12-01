@@ -3,3 +3,26 @@ Mickey Mouse
 Disney World
 8523699658
 2018-11-30 01:35:29_Reader Created by admin
+2018-12-01 17:53:38_Book 9781881133209 Returned.Fine 0 cents is charged!
+2018-12-01 17:53:39_Book 9781881133209 Borrowed
+2018-12-01 17:53:39_Book 9781881133209 Returned.Fine 0 cents is charged!
+2018-12-01 17:53:39_Book 9781881133209 Borrowed
+2018-12-01 17:53:40_Book 9781881133209 Returned.Fine 0 cents is charged!
+2018-12-01 17:53:40_Book 9781881133209 Borrowed
+2018-12-01 17:53:40_Book 9781881133209 Returned.Fine 0 cents is charged!
+2018-12-01 17:53:41_Book 9781881133209 Borrowed
+2018-12-01 17:53:41_Book 9781881133209 Returned.Fine 0 cents is charged!
+2018-12-01 17:53:42_Book 9781881133209 Borrowed
+2018-12-01 17:53:42_Book 9781881133209 Returned.Fine 0 cents is charged!
+2018-12-01 17:55:49_Book 9780486264646 Borrowed
+2018-12-01 17:55:49_Book 9780486264646 Returned.Fine 0 cents is charged!
+2018-12-01 17:55:50_Book 9780486264646 Borrowed
+2018-12-01 17:55:50_Book 9780486264646 Returned.Fine 0 cents is charged!
+2018-12-01 17:55:51_Book 9780486264646 Borrowed
+2018-12-01 17:55:51_Book 9780486264646 Returned.Fine 0 cents is charged!
+2018-12-01 17:55:52_Book 9780486264646 Borrowed
+2018-12-01 17:55:53_Book 9780486264646 Returned.Fine 0 cents is charged!
+2018-12-01 17:55:54_Book 9781603090100 Borrowed
+2018-12-01 17:55:55_Book 9781603090100 Returned.Fine 0 cents is charged!
+2018-12-01 17:56:08_Book 9781603090001 Borrowed
+2018-12-01 17:56:08_Book 9781603090001 Returned.Fine 0 cents is charged!
