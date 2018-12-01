@@ -46,6 +46,7 @@ class Ui_AddCopy(object):
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
         self.label.setPixmap("repository/cover/" + self.ISBN + ".jpg")
+        self.label.setScaledContents(True)
         self.lineEdit_title.setText(self.ISBN)
         self.pushButton.clicked.connect(self.addCopy)
 

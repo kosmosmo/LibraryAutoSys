@@ -11,16 +11,19 @@ from PySide import QtCore, QtGui
 from readerPop import Ui_readerpop
 from addConfirm import Ui_addConfirm
 from addCopy import Ui_AddCopy
+from bookInfoAdmin import Ui_bookInfoAdmin
 import readerPop
 import Authentication
 import Memeber
 import DBcall
 import Books
 import isbnlib
+import json
 from PySide.QtGui import *
 class Ui_adminWin(object):
     sql = DBcall.Mysql()
     reader = sql.getAllReader()
+
     def setupUi(self, adminWin):
         adminWin.setObjectName("adminWin")
         adminWin.resize(620, 632)
@@ -130,6 +133,10 @@ class Ui_adminWin(object):
 
         self.pushButton_get.clicked.connect(self.readerPop)
         self.pushButton_booklog.clicked.connect(self.addPop)
+        self.pushButton_bookstatus.clicked.connect(self.bookInfo)
+
+        self.pushButton_back.clicked.connect(self.getFine)
+        self.pushButton_10book.clicked.connect(self.topBooks)
 
 #   def addBook(self):
 #       ISBN = self.lineEdit_isbn.text()
@@ -151,14 +158,20 @@ class Ui_adminWin(object):
         self.window.setWindowTitle(id)
 
     def addPop(self):
-        ISBN = self.lineEdit_isbn.text()
+        ISBN = isbnlib.to_isbn13(self.lineEdit_isbn.text())
+        if not ISBN:
+            self.textEdit_history.setPlainText("ISBN not correct!")
+            return
         sql = DBcall.Mysql()
         temp = sql.checkBook(ISBN)
         if not temp:
-            self.window = QMainWindow()
-            self.ui = Ui_addConfirm(self.dump(ISBN))
-            self.ui.setupUi(self.window)
-            self.window.show()
+            try:
+                self.window = QMainWindow()
+                self.ui = Ui_addConfirm(self.dump(ISBN))
+                self.ui.setupUi(self.window)
+                self.window.show()
+            except:
+                self.textEdit_history.setText("Can not add book! Data can not fetch from ISBN library!!")
         else:
             self.window = QMainWindow()
             self.ui = Ui_AddCopy(ISBN)
@@ -182,14 +195,16 @@ class Ui_adminWin(object):
         user = self.lineEdit_user.text()
         pw = self.lineEdit_pw.text()
         res = False
-        if not user and not pw:
+        if user !="" and  pw != "":
             res = auth.createAdmin(user,pw)
-        if not res:
+        if res:
             self.textEdit_history.setText("Create admin "+ user +" sccussed!")
             self.lineEdit_user.clear()
             self.lineEdit_pw.clear()
         else:
             self.textEdit_history.setText("Create admin "+ user +" Failed!")
+            self.lineEdit_user.clear()
+            self.lineEdit_pw.clear()
 
     def addReader(self):
         mem = Memeber.MemberManagement()
@@ -212,4 +227,36 @@ class Ui_adminWin(object):
         for key,value in isbnlib.meta(ISBN).items():
             info.append(value)
         return info
+
+    def bookInfo(self):
+        ISBN = isbnlib.to_isbn13(self.lineEdit_isbn.text())
+        if not ISBN:
+            self.textEdit_history.setPlainText("ISBN not correct!")
+            return
+        sql = DBcall.Mysql()
+        if sql.checkBook(ISBN):
+            dump = sql.retriveBook(ISBN)
+            self.window = QMainWindow()
+            self.ui = Ui_bookInfoAdmin(dump)
+            self.ui.setupUi(self.window)
+            self.window.show()
+        else:
+            self.textEdit_history.setPlainText("Book not in the library")
+
+    def getFine(self):
+        sql = DBcall.Mysql()
+        self.textEdit_history.setPlainText("The average fine is "+str(sql.avgFine()))
+
+    def topBooks(self):
+        sql = DBcall.Mysql()
+        self.textEdit_history.clear()
+        dir = "cache/topBooks.txt"
+        file = open(dir, 'r')
+        data = json.load(file)
+        tens = Books.BookManagement().convertToTuple(data)
+        tens = sorted(tens)
+        for i in range(len(tens)-1,-1,-1):
+            self.textEdit_history.append("No." + str(len(tens)-i).zfill(2) + "_" + str(tens[i][0]).zfill(4)+ "_"+ sql.getBookTile(tens[i][1]))
+        file.close()
+
 

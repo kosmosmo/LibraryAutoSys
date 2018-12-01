@@ -1,0 +1,20 @@
+9781603090100
+Korgi
+Christian Slade
+Top Shelf Productions
+en
+2008
+2018-12-01 13:46:52_Book Created by admin
+2018-12-01 13:46:52_Book Copy 001 added by admin
+2018-12-01 14:51:30_Book Borrowed by 0980486
+2018-12-01 14:51:35_Returned Book by 0980486.Fine 0 cents is charged!
+2018-12-01 14:51:41_Book Borrowed by 0980486
+2018-12-01 14:51:43_Reserved by      0980486
+2018-12-01 14:51:46_Returned Book by 0980486.Fine 0 cents is charged!
+2018-12-01 14:51:47_Pickup by        0980486
+2018-12-01 14:51:49_Returned Book by 0980486.Fine 0 cents is charged!
+2018-12-01 14:54:51_Book Borrowed by 0980488
+2018-12-01 14:54:55_Reserved by      0980488
+2018-12-01 14:54:56_Returned Book by 0980488.Fine 0 cents is charged!
+2018-12-01 14:54:58_Pickup by        0980488
+2018-12-01 14:55:00_Returned Book by 0980488.Fine 0 cents is charged!

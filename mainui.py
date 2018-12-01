@@ -8,6 +8,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PySide import QtCore, QtGui
+import DBcall
 
 class Ui_Login(object):
     def setupUi(self, Login):
@@ -67,6 +68,6 @@ class Ui_Login(object):
         image = QtGui.QPixmap('hi.jpg')
         self.label_image.setPixmap(image)
         self.label_image.setScaledContents(True)
-        branchs = ['Flushing','Bikini Bottom','South Park','Neverland','Gotham City', 'Wonderful World', ]
+        branchs = DBcall.Mysql().getBranch()
         for item in branchs:
             self.comboBox_branch.addItem(item)

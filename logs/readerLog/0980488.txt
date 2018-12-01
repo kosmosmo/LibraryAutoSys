@@ -3,3 +3,8 @@ Bruce Wayne
 Gotham City
 8888888888
 2018-11-30 01:35:29_Reader Created by admin
+2018-12-01 14:54:51_Book 9781603090100 Borrowed
+2018-12-01 14:54:55_Book 9781603090100 Reserved
+2018-12-01 14:54:56_Book 9781603090100 Returned.Fine 0 cents is charged!
+2018-12-01 14:54:58_Book 9781603090100 PickUp
+2018-12-01 14:55:00_Book 9781603090100 Returned.Fine 0 cents is charged!

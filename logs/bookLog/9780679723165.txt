@@ -6,3 +6,11 @@ en
 1997
 2018-11-30 01:35:29_Book Created by admin
 2018-11-30 01:35:29_Book Copy 001 added by admin
+2018-12-01 14:52:20_Returned Book by0980486.Fine 0 cents is charged!
+2018-12-01 14:52:35_Book Borrowed by 0980486
+2018-12-01 16:13:16_Returned Book by 0980486.Fine 0 cents is charged!
+2018-12-01 16:13:32_Book Borrowed by 0980486
+2018-12-01 16:13:47_Reserved by      0980486
+2018-12-01 16:13:55_Returned Book by 0980486.Fine 0 cents is charged!
+2018-12-01 16:14:16_Pickup by        0980486
+2018-12-01 16:14:26_Returned Book by 0980486.Fine 0 cents is charged!

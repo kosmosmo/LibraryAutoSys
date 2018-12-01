@@ -8,6 +8,7 @@ import sys
 import Authentication
 import mainui
 import Memeber
+import DBcall
 import changeui
 
 class MainDialog(QDialog,mainui.Ui_Login):
@@ -19,10 +20,12 @@ class MainDialog(QDialog,mainui.Ui_Login):
         self.pushButton_readlog.clicked.connect(self.readerLog)
 
     def openAdmin(self):
+        branch = self.comboBox_branch.currentText()
         self.window = QMainWindow()
         self.ui = Ui_adminWin()
         self.ui.setupUi(self.window)
         self.window.show()
+        self.window.setWindowTitle(branch + "_" + DBcall.Mysql().retriveAdd(branch))
 
     def openChange(self):
         self.window = QMainWindow()
@@ -43,6 +46,7 @@ class MainDialog(QDialog,mainui.Ui_Login):
             self.lineEdit_password.clear()
 
     def readerLog(self):
+        branch = self.comboBox_branch.currentText()
         mem = Memeber.MemberManagement()
         bid = self.lineEdit_barcode.text()
         exi = mem.readerIn(bid)
@@ -51,6 +55,7 @@ class MainDialog(QDialog,mainui.Ui_Login):
             self.ui = Ui_readerLogin(bid)
             self.ui.setupUi(self.window)
             self.window.show()
+            self.window.setWindowTitle(branch + "_" + DBcall.Mysql().retriveAdd(branch))
         else:
             QMessageBox.information(self, "Nope!", "Wrong Reader ID")
 

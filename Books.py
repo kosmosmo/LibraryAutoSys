@@ -1,4 +1,4 @@
-import os,DBcall,datetime
+import os,DBcall,datetime,json,collections,isbnlib
 class BookManagement:
     def checkOut(self,ISBN,Borrow):
         sql = DBcall.Mysql()
@@ -49,3 +49,39 @@ class BookManagement:
     def checkOut(self,ISBN,Borrow):
         sql = DBcall.Mysql()
         sql.checkOut(ISBN,Borrow)
+
+    def appendLog(self,path,content):
+        file = open(path, 'a')
+        for item in content:
+            file.write("\n")
+            file.write(str(datetime.datetime.now())[:-7] +'_'+item)
+        file.close()
+
+    def convertToTuple(self,dict):
+        res = []
+        for key,value in dict.items():
+            res.append((int(value),key))
+        return res
+
+    def topBook(self,ISBN,count):
+        dir = "cache/topBooks.txt"
+        file = open(dir, 'r')
+        data = json.load(file)
+        file.close()
+
+        tens = self.convertToTuple(data)
+        tens.append((count,ISBN))
+        tens = sorted(tens)
+        if len(tens) > 11:
+            tens.pop(0)
+        dic = collections.defaultdict(int)
+        for item in tens:
+            dic[item[1]] = int(item[0])
+        r = json.dumps(dic)
+        file = open(dir,'w')
+        file.write(r)
+        file.close()
+
+a = BookManagement()
+
+

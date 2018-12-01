@@ -1,0 +1,13 @@
+9780486264646
+Heart Of Darkness
+Joseph Conrad
+Courier Corporation
+en
+1902
+2018-12-01 16:11:28_Book Created by 
+2018-12-01 16:11:28_Book Copy 001 added by 
+2018-12-01 16:15:03_Book Borrowed by 0980485
+2018-12-01 16:15:25_Reserved by      0980486
+2018-12-01 16:15:53_Returned Book by 0980485.Fine 0 cents is charged!
+2018-12-01 16:16:03_Pickup by        0980486
+2018-12-01 16:16:15_Returned Book by 0980486.Fine 0 cents is charged!

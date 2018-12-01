@@ -1,4 +1,4 @@
-import os,shutil,isbnlib,json,urllib,datetime,pymysql.cursors
+import os,shutil,isbnlib,json,urllib,datetime,pymysql.cursors,Books
 class Json:
     def tod(self,strr):
         strr = strr.split(' ')
@@ -258,12 +258,17 @@ class Mysql:
                     sqlQuery = "UPDATE copy SET BorrowID=%s, ReturnDate=%s WHERE ISBN13=%s AND Copy=%s"
                     sqlQuery2 = "UPDATE book SET Count=Count+1 WHERE ISBN13=%s"
                     sqlQuery3 = "INSERT INTO readerborrow(Id,ISBN13,Copy) VALUES (%s,%s,%s)"
+                    sqlQuery4 = "SELECT Count FROM book WHERE ISBN13=%s"
                     cursor.execute(sqlQuery,(BorrrowID,str(now)[:-7],ISBN,result[0]['copy']))
                     cursor.execute(sqlQuery2,(ISBN))
                     cursor.execute(sqlQuery3,(BorrrowID,ISBN,result[0]['copy']))
+                    cursor.execute(sqlQuery4,(ISBN))
+                    count = cursor.fetchone()["Count"]
                     connection.commit()
                     a = True
                     self.borrowCount(BorrrowID)
+                    bk = Books.BookManagement()
+                    bk.topBook(ISBN,count)
         finally:
             connection.close()
         return a
@@ -331,6 +336,9 @@ class Mysql:
                 result = cursor.fetchone()
                 copy = result['Copy']
                 temp = self.checkReserve(ISBN)
+                fine = self.computeFine(ISBN,BorrowID)
+                sqlQuery = "UPDATE reader SET Balance=Balance+%s  WHERE Id=%s"
+                cursor.execute(sqlQuery, (fine,BorrowID))
                 if not temp:
                     sqlQuery = "UPDATE copy SET BorrowID=NULL, ReturnDate=NULL WHERE ISBN13=%s AND Copy=%s"
                     cursor.execute(sqlQuery,(ISBN,copy))
@@ -533,3 +541,42 @@ class Mysql:
         if ans <=0: return 0
         return ans
 
+    def avgFine(self):
+        connection = self.con()
+        try:
+            with connection.cursor() as cursor:
+                sqlQuery = "SELECT Balance FROM reader"
+                cursor.execute(sqlQuery)
+                res = cursor.fetchall()
+        finally:
+            connection.close()
+        fines = []
+        for item in res:
+            fines.append(item["Balance"])
+        return float(sum(fines))/len(fines)
+
+    def retriveAdd(self,branch):
+        connection = self.con()
+        try:
+            with connection.cursor() as cursor:
+                sqlQuery = "SELECT address FROM branch WHERE branch=%s"
+                cursor.execute(sqlQuery,(branch))
+                res = cursor.fetchone()
+        finally:
+            connection.close()
+        return res["address"]
+
+    def getBranch(self):
+        connection = self.con()
+        try:
+            with connection.cursor() as cursor:
+                sqlQuery = "SELECT branch FROM branch"
+                cursor.execute(sqlQuery)
+                res = cursor.fetchall()
+                ans = []
+
+                for item in res:
+                    ans.append(item["branch"])
+        finally:
+            connection.close()
+        return ans

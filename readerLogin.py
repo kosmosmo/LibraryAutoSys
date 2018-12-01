@@ -13,6 +13,7 @@ import Books
 import os
 import DBcall
 import datetime
+import isbnlib
 from bookInfoReader import Ui_bookInfoReader
 
 class Ui_readerLogin(object):
@@ -143,12 +144,13 @@ class Ui_readerLogin(object):
         self.pushButton_reRes.clicked.connect(self.getReserved)
         self.pushButton_res.clicked.connect(self.makeRserved)
 
-        self.pushButton_ret.clicked.connect(self.returnBook)
+        self.pushButton_ret.clicked.connect(self.returnBookAA)
         self.pushButton_pick.clicked.connect(self.pickBook)
         self.displayReserve()
         self.listWidget.itemClicked.connect(self.updateISBN)
         self.pushButton_fine.clicked.connect(self.computeFine)
         self.pushButton_bookinfo.clicked.connect(self.bookInfo)
+
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(QtGui.QApplication.translate("Form", "Form", None, QtGui.QApplication.UnicodeUTF8))
@@ -172,6 +174,7 @@ class Ui_readerLogin(object):
         self.pushButton_fine.setText(QtGui.QApplication.translate("Form", "Compute Fine", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_dummy03.setText(QtGui.QApplication.translate("Form", "Dummy03", None, QtGui.QApplication.UnicodeUTF8))
 
+
     def buildBookList(self):
         self.listWidget.clear()
         searchPattern = self.lineEdit_search.text().lower()
@@ -185,13 +188,13 @@ class Ui_readerLogin(object):
 
     def pickUp(self):
         book = Books.BookManagement()
-        ISBN = self.lineEdit_isbn.text()
+        ISBN = isbnlib.to_isbn13(self.lineEdit_isbn.text())
         book.pickUp(ISBN,self.id)
 
     def checkOutt(self):
         sql = DBcall.Mysql()
         book = Books.BookManagement()
-        ISBN = self.lineEdit_isbn.text()
+        ISBN = isbnlib.to_isbn13(self.lineEdit_isbn.text())
         if len(sql.bookBorrow(self.id)) >= 10:
             self.textEdit_info.setPlainText("Check out failed! More than 10 books were borrowed by the reader already!")
         elif len(sql.getBookAvi(ISBN)[0]) == 0:
@@ -243,19 +246,31 @@ class Ui_readerLogin(object):
         else:
             sql.makeReserve(ISBN,self.id)
             self.textEdit_info.setPlainText("Reserved!")
+            log = Books.BookManagement()
+            path = "logs/readerLog/" + self.id + ".txt"
+            log.appendLog(path, ["Book " + ISBN +" Reserved"])
+            path = "logs/bookLog/" + ISBN + ".txt"
+            log.appendLog(path, ["Reserved by      " + self.id])
 
-    def returnBook(self):
+    def returnBookAA(self):
         sql = DBcall.Mysql()
-        ISBN = self.lineEdit_isbn.text()
+        ISBN = isbnlib.to_isbn13( self.lineEdit_isbn.text())
+        log = Books.BookManagement()
+        fine = sql.computeFine(ISBN,self.id)
         try:
             sql.returnBook(ISBN,self.id)
-            self.textEdit_info.setPlainText("Returned!")
+            self.textEdit_info.setPlainText("Returned!\n")
+            self.textEdit_info.append("Fine "+str(fine)+" cents is charged!")
+            path = "logs/readerLog/" + self.id+".txt"
+            log.appendLog(path,["Book " + ISBN +" Returned.Fine "+str(fine)+" cents is charged!"])
+            path = "logs/bookLog/" + ISBN+".txt"
+            log.appendLog(path,["Returned Book by " + self.id +".Fine "+str(fine)+" cents is charged!"])
         except:
             self.textEdit_info.setPlainText("Return Failed!")
 
     def pickBook(self):
         sql = DBcall.Mysql()
-        ISBN = self.lineEdit_isbn.text()
+        ISBN = isbnlib.to_isbn13(self.lineEdit_isbn.text())
         try:
             temp = sql.checkHold(ISBN, self.id)
             print temp
@@ -264,6 +279,11 @@ class Ui_readerLogin(object):
             else:
                 sql.pickUp(ISBN,self.id)
                 self.textEdit_info.setPlainText("Picked Up!")
+                log = Books.BookManagement()
+                path = "logs/readerLog/" + self.id + ".txt"
+                log.appendLog(path, ["Book " + ISBN + " PickUp"])
+                path = "logs/bookLog/" + ISBN + ".txt"
+                log.appendLog(path, ["Pickup by        " + self.id])
         except:
             self.textEdit_info.setPlainText("Picked Up Failed!")
 
@@ -286,7 +306,7 @@ class Ui_readerLogin(object):
 
     def computeFine(self):
         sql = DBcall.Mysql()
-        ISBN = self.lineEdit_isbn.text()
+        ISBN = isbnlib.to_isbn13(self.lineEdit_isbn.text())
         fine = sql.computeFine(ISBN,self.id)
         self.textEdit_info.setPlainText("The fine will be "+str(fine) + " cents")
 
