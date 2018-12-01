@@ -14,4 +14,9 @@ class MemberManagement:
         file.write(phone)
         file.write("\n")
         file.write(str(datetime.datetime.now())[:-7] +'_'+'Reader Created by '+ admin )
+        file.close()
         return id
+
+    def readerIn(self,BorrowID):
+        sql = DBcall.Mysql()
+        return sql.readerIn(BorrowID)

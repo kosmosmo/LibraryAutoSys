@@ -1,4 +1,2 @@
-id = '0980485'
-path = "repository/pictures/" + id + ".jpg"
-import os
-print os.path.exists(path)
+import isbnlib
+print isbnlib.meta("9781603090001")

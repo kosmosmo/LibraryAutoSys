@@ -2,9 +2,12 @@ from PySide.QtCore import *
 from PySide.QtGui import *
 from changeui import Ui_ChangePassword
 from adminWin import Ui_adminWin
+from readerLogin import Ui_readerLogin
+from addConfirm import Ui_addConfirm
 import sys
 import Authentication
 import mainui
+import Memeber
 import changeui
 
 class MainDialog(QDialog,mainui.Ui_Login):
@@ -13,6 +16,7 @@ class MainDialog(QDialog,mainui.Ui_Login):
         self.setupUi(self)
         self.pushButton_adminchange.clicked.connect(self.openChange)
         self.pushButton_adminlog.clicked.connect(self.checking)
+        self.pushButton_readlog.clicked.connect(self.readerLog)
 
     def openAdmin(self):
         self.window = QMainWindow()
@@ -37,6 +41,21 @@ class MainDialog(QDialog,mainui.Ui_Login):
             file.write(self.lineEdit_user.text())
             file.close()
             self.lineEdit_password.clear()
+
+    def readerLog(self):
+        mem = Memeber.MemberManagement()
+        bid = self.lineEdit_barcode.text()
+        exi = mem.readerIn(bid)
+        if exi:
+            self.window = QMainWindow()
+            self.ui = Ui_readerLogin(bid)
+            self.ui.setupUi(self.window)
+            self.window.show()
+        else:
+            QMessageBox.information(self, "Nope!", "Wrong Reader ID")
+
+
+
 
 
 

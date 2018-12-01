@@ -9,10 +9,14 @@
 
 from PySide import QtCore, QtGui
 from readerPop import Ui_readerpop
+from addConfirm import Ui_addConfirm
+from addCopy import Ui_AddCopy
 import readerPop
 import Authentication
 import Memeber
 import DBcall
+import Books
+import isbnlib
 from PySide.QtGui import *
 class Ui_adminWin(object):
     sql = DBcall.Mysql()
@@ -103,7 +107,7 @@ class Ui_adminWin(object):
         adminWin.setWindowTitle(QtGui.QApplication.translate("adminWin", "Form", None, QtGui.QApplication.UnicodeUTF8))
         self.label_search.setText(QtGui.QApplication.translate("adminWin", "Search", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_get.setText(QtGui.QApplication.translate("adminWin", "Get", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButton_back.setText(QtGui.QApplication.translate("adminWin", "Back", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButton_back.setText(QtGui.QApplication.translate("adminWin", "Avg Fine", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_bookstatus.setText(QtGui.QApplication.translate("adminWin", "Book status", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_10borrow.setText(QtGui.QApplication.translate("adminWin", "Top 10 borrowers", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_10book.setText(QtGui.QApplication.translate("adminWin", "Top 10 books", None, QtGui.QApplication.UnicodeUTF8))
@@ -115,7 +119,7 @@ class Ui_adminWin(object):
         self.label_phone.setText(QtGui.QApplication.translate("adminWin", "Phone:", None, QtGui.QApplication.UnicodeUTF8))
         self.pushButton_addreader.setText(QtGui.QApplication.translate("adminWin", "Add new reader", None, QtGui.QApplication.UnicodeUTF8))
         self.label_history.setText(QtGui.QApplication.translate("adminWin", "History:", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButton_booklog.setText(QtGui.QApplication.translate("adminWin", "Book Log", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButton_booklog.setText(QtGui.QApplication.translate("adminWin", "Add Book", None, QtGui.QApplication.UnicodeUTF8))
         self.label_isbn.setText(QtGui.QApplication.translate("adminWin", "ISBN:", None, QtGui.QApplication.UnicodeUTF8))
 
         for item in self.reader:
@@ -125,6 +129,18 @@ class Ui_adminWin(object):
         self.lineEdit_search.textChanged.connect(self.buildReaderList)
 
         self.pushButton_get.clicked.connect(self.readerPop)
+        self.pushButton_booklog.clicked.connect(self.addPop)
+
+#   def addBook(self):
+#       ISBN = self.lineEdit_isbn.text()
+#       if len(ISBN) != 13:
+#           self.textEdit_history.setPlainText("ISBN format not correct!")
+#           self.lineEdit_isbn.clear()
+#       else:
+#           bk = Books.BookManagement()
+#           feed = bk.addBook(ISBN)
+#           self.textEdit_history.setPlainText(feed)
+#           self.lineEdit_isbn.clear()
 
     def readerPop(self):
         id = self.listWidget_reader.currentItem().text()[:7]
@@ -134,6 +150,20 @@ class Ui_adminWin(object):
         self.window.show()
         self.window.setWindowTitle(id)
 
+    def addPop(self):
+        ISBN = self.lineEdit_isbn.text()
+        sql = DBcall.Mysql()
+        temp = sql.checkBook(ISBN)
+        if not temp:
+            self.window = QMainWindow()
+            self.ui = Ui_addConfirm(self.dump(ISBN))
+            self.ui.setupUi(self.window)
+            self.window.show()
+        else:
+            self.window = QMainWindow()
+            self.ui = Ui_AddCopy(ISBN)
+            self.ui.setupUi(self.window)
+            self.window.show()
 
 
     def buildReaderList(self):
@@ -177,4 +207,9 @@ class Ui_adminWin(object):
         else:
             self.textEdit_history.setText("Failed! Name can not be empty!")
 
+    def dump(self,ISBN):
+        info = []
+        for key,value in isbnlib.meta(ISBN).items():
+            info.append(value)
+        return info
 

@@ -137,6 +137,34 @@ class Json:
 
 
 class Mysql:
+    def retriveBook(self,ISBN):
+        connection = self.con()
+        try:
+            with connection.cursor() as cursor:
+                sqlQuery = "SELECT Title, Author, Publisher,Language, Year FROM book WHERE ISBN13=%s"
+                cursor.execute(sqlQuery, (ISBN))
+                result = cursor.fetchone()
+        finally:
+            connection.close()
+        print result
+        return [result["Publisher"],result["Language"],result["Title"],result["Author"],ISBN,result["Year"]]
+
+    def tod(self,strr):
+        strr = strr.split(' ')
+        temp = ' '.join(strr[0].split('-') + strr[1].split(':'))
+        return datetime.datetime.strptime(temp, '%Y %m %d %H %M %S')
+
+    def readerIn(self,BorrowID):
+        connection = self.con()
+        try:
+            with connection.cursor() as cursor:
+                sqlQuery = "SELECT Id FROM reader WHERE Id=%s"
+                cursor.execute(sqlQuery,(BorrowID))
+                result = cursor.fetchone()
+        finally:
+            connection.close()
+        return result != None
+
     def getAllReader(self):
         connection = self.con()
         try:
@@ -150,6 +178,7 @@ class Mysql:
         finally:
             connection.close()
         return res
+
     def checkBook(self,ISBN):
         connection = self.con()
         try:
@@ -175,8 +204,10 @@ class Mysql:
             info.append(value)
         return info
 
-    def addbook(self,ISBN):
-        p,lan,ti,au,isbn,y = self.dump(ISBN)
+    def addbook(self,dump):
+        p,lan,ti,au,isbn,y = dump
+        if p == "":p = ti
+        if au == "": au = ti
         connection = self.con()
         try:
             with connection.cursor() as cursor:
@@ -189,9 +220,7 @@ class Mysql:
                 connection.commit()
         finally:
             connection.close()
-        curl = isbnlib.cover(ISBN)['smallThumbnail']
-        urllib.urlretrieve(curl,"repository/cover/"+ISBN+".jpg")
-        return "new book add"
+        return
 
     def addcopy(self,ISBN):
         connection = self.con()
@@ -210,13 +239,13 @@ class Mysql:
                 connection.commit()
         finally:
             connection.close()
-        return "new copy" + copy + ' add'
+        return copy
 
     def checkOut(self,ISBN,BorrrowID):
         if len(self.bookBorrow(BorrrowID)) >= 10:
             return "Check out failed! More than 10 books were borrowed by the reader already!"
         connection = self.con()
-        a = "No book available"
+        a = False
         try:
             with connection.cursor() as cursor:
                 sqlQuery = "SELECT copy FROM copy WHERE ISBN13=%s AND BorrowID IS NULL"
@@ -233,7 +262,7 @@ class Mysql:
                     cursor.execute(sqlQuery2,(ISBN))
                     cursor.execute(sqlQuery3,(BorrrowID,ISBN,result[0]['copy']))
                     connection.commit()
-                    a = "Check out successed"
+                    a = True
                     self.borrowCount(BorrrowID)
         finally:
             connection.close()
@@ -340,8 +369,6 @@ class Mysql:
         return result
 
     def makeReserve(self,ISBN,BorrowID):
-        if len(self.bookReserve(BorrowID)) >= 10:
-            return "Reserve failed! More than 10 books were reserved by the reader already!"
         connection = self.con()
         try:
             with connection.cursor() as cursor:
@@ -353,6 +380,16 @@ class Mysql:
             connection.close()
         return True
 
+    def checkReserveAvi(self,ISBN):
+        connection = self.con()
+        try:
+            with connection.cursor() as cursor:
+                sqlQuery = "SELECT ISBN13 FROM copy WHERE ISBN13=%s AND ReturnDate is NULL"
+                cursor.execute(sqlQuery,(ISBN))
+                result = cursor.fetchone()
+        finally:
+            connection.close()
+        return result != None
 
     def addReader(self,name,add,phone):
         cache = "cache/readerid.txt"
@@ -381,4 +418,118 @@ class Mysql:
         finally:
             connection.close()
 
-a=Mysql()
+    def getBookTile(self,ISBN):
+        connection = self.con()
+        try:
+            with connection.cursor() as cursor:
+                sqlQuery = "SELECT Title FROM book WHERE ISBN13=%s"
+                cursor.execute(sqlQuery,(ISBN))
+                result = cursor.fetchone()
+        finally:
+            connection.close()
+        return result['Title']
+
+    def getAllBook(self):
+        connection = self.con()
+        try:
+            with connection.cursor() as cursor:
+                sqlQuery = "SELECT ISBN13, Title, Author FROM book"
+                cursor.execute(sqlQuery)
+                result = cursor.fetchall()
+                res = []
+                for item in result:
+                    res.append(item['ISBN13']+'_'+item['Title']+'_'+item['Author'])
+        finally:
+            connection.close()
+        return res
+
+    def getBookAvi(self,ISBN):
+        connection = self.con()
+        res = [None,None]
+        try:
+            with connection.cursor() as cursor:
+                sqlQuery = "SELECT ISBN13, ReturnDate FROM copy WHERE ISBN13=%s"
+                cursor.execute(sqlQuery,(ISBN))
+                copys = cursor.fetchall()
+                sqlQuery2 = "SELECT ISBN13 FROM copy WHERE ISBN13=%s AND ReturnDate is NULL"
+                cursor.execute(sqlQuery2,(ISBN))
+                avi = cursor.fetchall()
+        finally:
+            connection.close()
+        res[0] = avi
+        res[1] = copys
+        return res
+
+    def getBorrowed(self,ID):
+        connection = self.con()
+        try:
+            with connection.cursor() as cursor:
+                sqlQuery = "SELECT ISBN13 FROM readerborrow WHERE Id=%s"
+                cursor.execute(sqlQuery,(ID))
+                res = cursor.fetchall()
+                isbns = []
+                for item in res:
+                    isbns.append(item["ISBN13"])
+        finally:
+            connection.close()
+        return isbns
+
+    def getReserved(self,ID):
+        connection = self.con()
+        try:
+            with connection.cursor() as cursor:
+                sqlQuery = "SELECT ISBN13 FROM readerreserve WHERE Id=%s"
+                cursor.execute(sqlQuery,(ID))
+                res = cursor.fetchall()
+                isbns = []
+                for item in res:
+                    isbns.append(item["ISBN13"])
+        finally:
+            connection.close()
+        return isbns
+
+    def getReserveInfo(self,ID):
+        connection = self.con()
+        res = [None,None]
+        try:
+            with connection.cursor() as cursor:
+                sqlQuery = "SELECT ISBN13 FROM readerreserve WHERE Id=%s AND inhold=1"
+                cursor.execute(sqlQuery, (ID))
+                resss = cursor.fetchall()
+                ready = []
+                for item in resss:
+                    ready.append(item["ISBN13"])
+                sqlQuery = "SELECT ISBN13 FROM readerreserve WHERE Id=%s AND inhold=0"
+                cursor.execute(sqlQuery, (ID))
+                resss = cursor.fetchall()
+                notready = []
+                for item in resss:
+                    notready.append(item["ISBN13"])
+        finally:
+            connection.close()
+        res[0] = ready
+        res[1] = notready
+        return res
+
+    def computeFine(self,ISBN,ID):
+        now = datetime.datetime.now()
+        connection = self.con()
+        try:
+            with connection.cursor() as cursor:
+                sqlQuery = "SELECT ReturnDate FROM copy WHERE ISBN13=%s AND BorrowId=%s AND ReturnDate IS NOT NULL"
+                cursor.execute(sqlQuery, (ISBN,ID))
+                res = cursor.fetchall()
+                date = []
+                for item in res:
+                    date.append(item["ReturnDate"])
+                date.sort()
+                if date:
+                    redated = date[-1]
+                    ans = int((now - self.tod(redated)).days) * 20
+                else:
+                    ans = 0
+        finally:
+            connection.close()
+        if ans <=0: return 0
+        return ans
+

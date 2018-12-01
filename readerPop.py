@@ -9,7 +9,7 @@
 
 from PySide import QtCore, QtGui
 import adminWin,os
-
+import DBcall
 
 class Ui_readerpop(object):
     def __init__(self,id):
@@ -52,6 +52,7 @@ class Ui_readerpop(object):
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
+
         path = "logs/readerLog/" + self.id + ".txt"
         text = open(path).read()
         file = open(path).readlines()
