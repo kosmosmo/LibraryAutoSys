@@ -1,0 +1,162 @@
+[
+{"type":"header","version":"4.8.3","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"library"},
+{"type":"table","name":"author","database":"library","data":
+[
+{"Author":"Alan Moore","ISBN13":"9781603090001"},
+{"Author":"Alice Walker","ISBN13":"9780156028356"},
+{"Author":"Campbell Whyte","ISBN13":"9781603094122"},
+{"Author":"Carson McCullers","ISBN13":"9780618526413"},
+{"Author":"Charles Dickens","ISBN13":"9780199536245"},
+{"Author":"Christian Slade","ISBN13":"9781603090100"},
+{"Author":"Edith Wharton","ISBN13":"9780486298030"},
+{"Author":"Edward Morgan Forster","ISBN13":"9780141182131"},
+{"Author":"Emily Dickinson","ISBN13":"9780674018242"},
+{"Author":"Erich Maria Remarque","ISBN13":"9780449213940"},
+{"Author":"Ernest Hemingway","ISBN13":"9780684843322"},
+{"Author":"F. Scott Fitzgerald","ISBN13":"9781906230746"},
+{"Author":"Flannery O'Connor","ISBN13":"9780374515362"},
+{"Author":"Herman Melville","ISBN13":"9781853260087"},
+{"Author":"Jack Kerouac","ISBN13":"9780140283297"},
+{"Author":"James Joyce","ISBN13":"9780141181264"},
+{"Author":"James Joyce","ISBN13":"9783518455944"},
+{"Author":"Jason E. Zinza","ISBN13":"9781881133209"},
+{"Author":"Joseph Conrad","ISBN13":"9780486264646"},
+{"Author":"Junot Daz","ISBN13":"9781594483295"},
+{"Author":"Kazuo Ishiguro","ISBN13":"9781400078776"},
+{"Author":"Marguerite Yourcenar","ISBN13":"9780374529260"},
+{"Author":"Mario Puzo","ISBN13":"9780345476722"},
+{"Author":"Michael Beschloss","ISBN13":"9780307409607"},
+{"Author":"Miguel de Cervantes","ISBN13":"9780486821955"},
+{"Author":"Moliere","ISBN13":"9781417931361"},
+{"Author":"Ray Bradbury","ISBN13":"9781451673319"},
+{"Author":"Stephen Crane","ISBN13":"9780486264653"},
+{"Author":"Troy Little","ISBN13":"9781603093750"},
+{"Author":"Vladimir Vladimirovich Nabokov","ISBN13":"9780679723165"},
+{"Author":"William Butler Yeats","ISBN13":"9780684807317"}
+]
+}
+,{"type":"table","name":"book","database":"library","data":
+[
+{"ISBN13":"9780140283297","Title":"On The Road","Author":"Jack Kerouac","Publisher":"Penguin Group USA","Language":"en","Year":"1955","Count":"0"},
+{"ISBN13":"9780141181264","Title":"Finnegans Wake","Author":"James Joyce","Publisher":"Penguin","Language":"en","Year":"1999","Count":"0"},
+{"ISBN13":"9780141182131","Title":"Howards End","Author":"Edward Morgan Forster","Publisher":"Penguin","Language":"en","Year":"2000","Count":"0"},
+{"ISBN13":"9780156028356","Title":"The Color Purple","Author":"Alice Walker","Publisher":"Houghton Mifflin Harcourt","Language":"en","Year":"1982","Count":"0"},
+{"ISBN13":"9780199536245","Title":"The Pickwick Papers","Author":"Charles Dickens","Publisher":"Oxford Paperbacks","Language":"en","Year":"2008","Count":"0"},
+{"ISBN13":"9780307409607","Title":"Presidents Of War","Author":"Michael Beschloss","Publisher":"Crown","Language":"en","Year":"2018","Count":"19"},
+{"ISBN13":"9780345476722","Title":"The Fortunate Pilgrim","Author":"Mario Puzo","Publisher":"Ballantine Books","Language":"en","Year":"2004","Count":"28"},
+{"ISBN13":"9780374515362","Title":"The Complete Stories","Author":"Flannery O'Connor","Publisher":"Macmillan","Language":"en","Year":"1971","Count":"0"},
+{"ISBN13":"9780374529260","Title":"Memoirs Of Hadrian","Author":"Marguerite Yourcenar","Publisher":"Macmillan","Language":"en","Year":"2005","Count":"0"},
+{"ISBN13":"9780449213940","Title":"All Quiet On The Western Front","Author":"Erich Maria Remarque","Publisher":"All Quiet On The Western Front","Language":"en","Year":"1982","Count":"0"},
+{"ISBN13":"9780486264646","Title":"Heart Of Darkness","Author":"Joseph Conrad","Publisher":"Courier Corporation","Language":"en","Year":"1902","Count":"6"},
+{"ISBN13":"9780486264653","Title":"The Red Badge Of Courage","Author":"Stephen Crane","Publisher":"Courier Corporation","Language":"en","Year":"1990","Count":"0"},
+{"ISBN13":"9780486298030","Title":"The Age Of Innocence","Author":"Edith Wharton","Publisher":"Courier Corporation","Language":"en","Year":"1997","Count":"0"},
+{"ISBN13":"9780486821955","Title":"Don Quixote","Author":"Miguel de Cervantes","Publisher":"Courier Dover Publications","Language":"en","Year":"2018","Count":"3"},
+{"ISBN13":"9780618526413","Title":"The Heart Is A Lonely Hunter","Author":"Carson McCullers","Publisher":"Houghton Mifflin Harcourt","Language":"en","Year":"2004","Count":"7"},
+{"ISBN13":"9780674018242","Title":"The Poems Of Emily Dickinson","Author":"Emily Dickinson","Publisher":"Belknap Press","Language":"en","Year":"2005","Count":"0"},
+{"ISBN13":"9780679723165","Title":"Lolita","Author":"Vladimir Vladimirovich Nabokov","Publisher":"Vintage Books","Language":"en","Year":"1997","Count":"8"},
+{"ISBN13":"9780684807317","Title":"The Collected Works Of W.B. Yeats Volume I: The Poems","Author":"William Butler Yeats","Publisher":"Scribner","Language":"en","Year":"1996","Count":"0"},
+{"ISBN13":"9780684843322","Title":"The Complete Short Stories Of Ernest Hemingway","Author":"Ernest Hemingway","Publisher":"Scribner","Language":"en","Year":"1998","Count":"0"},
+{"ISBN13":"9781400078776","Title":"Never Let Me Go","Author":"Kazuo Ishiguro","Publisher":"Vintage","Language":"en","Year":"2006","Count":"7"},
+{"ISBN13":"9781417931361","Title":"The Would Be Gentleman","Author":"Moliere","Publisher":"Kessinger Publishing","Language":"en","Year":"2005","Count":"0"},
+{"ISBN13":"9781451673319","Title":"Fahrenheit 451","Author":"Ray Bradbury","Publisher":"Simon and Schuster","Language":"en","Year":"2012","Count":"0"},
+{"ISBN13":"9781594483295","Title":"The Brief Wondrous Life Of Oscar Wao","Author":"Junot Daz","Publisher":"Penguin","Language":"en","Year":"2008","Count":"0"},
+{"ISBN13":"9781603090001","Title":"League Of Extraordinary Gentlemen","Author":"Alan Moore","Publisher":"League Of Extraordinary Gentlemen","Language":"en","Year":"2009","Count":"1"},
+{"ISBN13":"9781603090100","Title":"Korgi","Author":"Christian Slade","Publisher":"Top Shelf Productions","Language":"en","Year":"2008","Count":"6"},
+{"ISBN13":"9781603093750","Title":"Hunter S. Thompson's Fear And Loathing In Las Vegas","Author":"Troy Little","Publisher":"Idw - Top Shelf","Language":"en","Year":"2015","Count":"2"},
+{"ISBN13":"9781603094122","Title":"Home Time (Book One)","Author":"Campbell Whyte","Publisher":"Home Time","Language":"en","Year":"2017","Count":"18"},
+{"ISBN13":"9781853260087","Title":"Moby Dick","Author":"Herman Melville","Publisher":"Wordsworth Editions","Language":"en","Year":"1992","Count":"8"},
+{"ISBN13":"9781881133209","Title":"Master American Sign Language!","Author":"Jason E. Zinza","Publisher":"Sign Media Incorporated","Language":"en","Year":"2006","Count":"10"},
+{"ISBN13":"9781906230746","Title":"The Great Gatsby","Author":"F. Scott Fitzgerald","Publisher":"Real Reads Limited","Language":"en","Year":"2014","Count":"6"},
+{"ISBN13":"9783518455944","Title":"Ulysses. Sonderausgabe","Author":"James Joyce","Publisher":"Ulysses. Sonderausgabe","Language":"en","Year":"2004","Count":"0"}
+]
+}
+,{"type":"table","name":"branch","database":"library","data":
+[
+{"branch":"0Flushing","address":"Queens,NewYork"},
+{"branch":"Bikini Bottom","address":"Underwater pineapple"},
+{"branch":"Gotham City","address":"New Jersey"},
+{"branch":"Neverland","address":"Your imagination"},
+{"branch":"South Park","address":"Rocky Mountains of central Colorado"},
+{"branch":"Wonderful World","address":"Land of OZ"}
+]
+}
+,{"type":"table","name":"copy","database":"library","data":
+[
+{"ISBN13":"9780140283297","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9780141181264","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9780141182131","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9780156028356","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9780199536245","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9780307409607","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9780345476722","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9780345476722","Copy":"002","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9780374515362","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9780374529260","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9780449213940","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9780486264646","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9780486264653","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9780486298030","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9780486821955","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9780618526413","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9780674018242","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9780679723165","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9780684807317","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9780684843322","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9781400078776","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9781417931361","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9781417931361","Copy":"002","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9781451673319","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9781594483295","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9781603090001","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9781603090100","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9781603093750","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9781603094122","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9781853260087","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9781881133209","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9781906230746","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9783518455944","Copy":"001","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9783518455944","Copy":"002","ReturnDate":null,"BorrowID":null,"ReserveID":null},
+{"ISBN13":"9783518455944","Copy":"003","ReturnDate":null,"BorrowID":null,"ReserveID":null}
+]
+}
+,{"type":"table","name":"reader","database":"library","data":
+[
+{"Id":"0980485","Name":"Jun Chen","Address":"Flushing","Phone":"3473999999","Count":"43","Balance":"200"},
+{"Id":"0980486","Name":"Pewdiepie","Address":"Internet","Phone":"3473991234","Count":"35","Balance":"520"},
+{"Id":"0980487","Name":"Jackie Chen","Address":"Hollywood","Phone":"3473994321","Count":"2","Balance":"0"},
+{"Id":"0980488","Name":"Bruce Wayne","Address":"Gotham City","Phone":"8888888888","Count":"2","Balance":"0"},
+{"Id":"0980489","Name":"Peter Pan","Address":"Neverland","Phone":"3471234567","Count":"10","Balance":"0"},
+{"Id":"0980490","Name":"Gordon Ramsay","Address":"United Kingdom","Phone":"3471230000","Count":"0","Balance":"0"},
+{"Id":"0980491","Name":"Darth Vader","Address":"Death Star","Phone":"4444444444","Count":"0","Balance":"0"},
+{"Id":"0980492","Name":"Bugs Bunny","Address":"Rabbit Hole","Phone":"8907659876","Count":"0","Balance":"0"},
+{"Id":"0980494","Name":"Justin Bieber","Address":"Canada","Phone":"8999999999","Count":"0","Balance":"0"},
+{"Id":"0980495","Name":"Harry Potter","Address":"Hogwarts School","Phone":"9874563579","Count":"0","Balance":"0"},
+{"Id":"0980496","Name":"James Bond","Address":"Bond's places","Phone":"0070070007","Count":"0","Balance":"0"},
+{"Id":"0980497","Name":"Jack Sparrow","Address":"Boat","Phone":"9638521547","Count":"0","Balance":"0"},
+{"Id":"0980498","Name":"Mickey Mouse","Address":"Disney World","Phone":"8523699658","Count":"11","Balance":"0"},
+{"Id":"0980499","Name":"Logan Paul","Address":"Los Angeles","Phone":"8521323659","Count":"0","Balance":"0"},
+{"Id":"0980500","Name":"Jake Paul","Address":"Los Angeles","Phone":"8521323658","Count":"5","Balance":"0"},
+{"Id":"0980501","Name":"Ed Sheeran","Address":"Castle on the Hill","Phone":"8521329876","Count":"7","Balance":"0"},
+{"Id":"0980502","Name":"Winnie Pooh","Address":"Honey Jar","Phone":"8520988888","Count":"0","Balance":"0"},
+{"Id":"0980503","Name":"Dora","Address":"Mexico","Phone":"3450988888","Count":"0","Balance":"0"},
+{"Id":"0980504","Name":"Diego","Address":"Mexico Jungle","Phone":"3330988888","Count":"0","Balance":"0"},
+{"Id":"0980505","Name":"Pikachu","Address":"Pokemon Center","Phone":"0010020005","Count":"0","Balance":"0"},
+{"Id":"0980506","Name":"Dwayne Johnson","Address":"Gym","Phone":"8523647410","Count":"0","Balance":"0"},
+{"Id":"0980507","Name":"SpongeBob","Address":"Underwater","Phone":"4598710934","Count":"0","Balance":"0"},
+{"Id":"0980508","Name":"Billy Herrington","Address":"Long Island","Phone":"0097786666","Count":"0","Balance":"0"},
+{"Id":"0980509","Name":"Unicorn","Address":"Rainbow","Phone":"3333333338","Count":"0","Balance":"0"},
+{"Id":"0980510","Name":"Koki","Address":"Magic Forest","Phone":"9876667777","Count":"0","Balance":"0"}
+]
+}
+,{"type":"table","name":"readerborrow","database":"library","data":
+[
+
+]
+}
+,{"type":"table","name":"readerreserve","database":"library","data":
+[
+
+]
+}
+]
